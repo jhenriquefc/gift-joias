@@ -1,0 +1,132 @@
+/* src/components/Hero/Hero.css */
+
+.hero-section {
+  position: relative;
+  height: 90vh; /* Ocupa 90% da altura da tela */
+  width: 100%;
+  /* Imagem de Fundo (Alta Resolução - Unsplash) */
+  background-image: url('https://images.unsplash.com/photo-1515562141207-7a18b5ce3377?q=80&w=1920');
+  background-size: cover; /* Cobre todo o espaço */
+  background-position: center; /* Centraliza a imagem */
+  background-attachment: fixed; /* Efeito Parallax suave ao rolar */
+  display: flex;
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  color: white;
+  margin-top: 80px; /* Compensa a altura da Navbar fixa */
+}
+
+/* Camada escura para garantir a leitura do texto branco */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Preto com 40% de opacidade */
+  z-index: 1;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2; /* Fica acima da overlay */
+}
+
+.hero-content {
+  max-width: 700px; /* Limita a largura do texto para melhor leitura */
+  text-align: left; /* Alinhamento sofisticado à esquerda */
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 4px; /* Espaçamento "luxo" */
+  color: #D4AF37; /* Dourado */
+  margin-bottom: 15px;
+  display: block;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif; /* Fonte clássica de joalheria */
+  font-size: 3.5rem; /* Tamanho grande e impactante */
+  line-height: 1.2;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+.hero-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #f0f0f0;
+  margin-bottom: 40px;
+  max-width: 550px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px; /* Espaço entre os botões */
+}
+
+/* Estilo do Botão Principal (Dourado) */
+.btn-primary {
+  display: inline-block;
+  padding: 16px 35px;
+  background-color: #D4AF37; /* Dourado */
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+  border: 1px solid #D4AF37;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #D4AF37;
+  transform: translateY(-2px); /* Efeito de flutuar */
+}
+
+/* Estilo do Botão Secundário (Transparente com Borda) */
+.btn-secondary {
+  display: inline-block;
+  padding: 16px 35px;
+  background-color: transparent;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 1px solid white;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+.btn-secondary:hover {
+  background-color: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+/* Responsividade para Mobile */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 100vh; /* Em mobile, ocupa a tela cheia */
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-actions {
+    flex-direction: column; /* Botões um abaixo do outro no mobile */
+    gap: 15px;
+  }
+}

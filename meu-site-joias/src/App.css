@@ -1,0 +1,41 @@
+.hero {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+              url('https://images.unsplash.com/photo-1515562141207-7a18b5ce3377?q=80&w=1920');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  margin-top: 80px; /* Para não ficar atrás da navbar */
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.btn-hero {
+  padding: 15px 40px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn-hero:hover {
+  background: white;
+  color: black;
+}
