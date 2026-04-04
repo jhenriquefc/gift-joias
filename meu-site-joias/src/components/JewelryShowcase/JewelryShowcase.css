@@ -1,0 +1,138 @@
+/* src/components/JewelryShowcase/JewelryShowcase.css */
+
+.showcase-container {
+  width: 100%;
+  overflow: hidden; /* Esconde o que sai da tela */
+  padding: 20px 0 60px 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* Máscara de gradiente para as bordas sumirem suavemente (opcional, mas dá cara de marca cara) */
+.showcase-container::before,
+.showcase-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.showcase-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(10, 31, 68, 1), transparent);
+}
+
+.showcase-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(10, 31, 68, 1), transparent);
+}
+
+.showcase-track {
+  display: flex;
+  gap: 30px;
+  width: max-content; /* Permite que a div cresça para caber todas as fotos */
+  animation: scroll-marquee 25s linear infinite;
+}
+
+/* O toque mágico: Pausa a rolagem quando o mouse passa por cima */
+.showcase-track:hover {
+  animation-play-state: paused;
+}
+
+.showcase-card {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.showcase-card:hover {
+  transform: translateY(-10px); /* Levanta o card no hover */
+}
+
+.showcase-img-wrapper {
+  width: 280px;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.2); /* Borda ouro bem suave */
+}
+
+.showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a foto preencha o quadrado sem distorcer */
+  transition: transform 0.5s ease;
+}
+
+.showcase-card:hover .showcase-img {
+  transform: scale(1.1); /* Dá um zoom leve na foto */
+}
+
+/* Overlay escuro que aparece no hover da foto */
+.showcase-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 31, 68, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.showcase-card:hover .showcase-hover-overlay {
+  opacity: 1;
+}
+
+.showcase-btn {
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #0a1f44;
+  background-color: #D4AF37;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.showcase-card:hover .showcase-btn {
+  transform: translateY(0);
+}
+
+.showcase-title {
+  margin-top: 15px;
+  font-family: 'Cinzel', serif;
+  color: #F3E5AB;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* KEYFRAME DA ROLAGEM INFINITA */
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Move exatos 50% por causa da duplicação do array */
+}
+
+/* Ajuste mobile */
+@media (max-width: 768px) {
+  .showcase-card, .showcase-img-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+}

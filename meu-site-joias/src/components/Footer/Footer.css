@@ -1,0 +1,234 @@
+/* src/components/Footer/Footer.css */
+
+.footer-section {
+  position: relative;
+  width: 100%;
+  background-color: #0a1f44; /* Azul Royal Profundo / Navy */
+  color: #ffffff;
+  padding-top: 50px;
+  overflow: hidden;
+  z-index: 20;
+}
+
+/* --- SEPARADOR DE ONDAS EM LINHAS --- */
+.footer-wave-separator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+}
+
+.footer-wave-separator svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- CONTAINER E GRID --- */
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 40px 20px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+  gap: 50px;
+  margin-bottom: 60px;
+}
+
+/* --- COLUNA 1: MARCA --- */
+.footer-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  color: #EABF2A; /* Ouro Vibrante */
+  margin-bottom: 20px;
+}
+
+.footer-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 25px;
+  max-width: 300px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon:hover {
+  background: #00B4DB;
+  border-color: #00B4DB;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4);
+}
+
+/* --- HEADINGS GERAIS DAS COLUNAS --- */
+.footer-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #EABF2A;
+}
+
+/* --- LISTAS DE LINKS E CONTATO --- */
+.footer-links ul, .footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer-links a, .footer-contact li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links a:hover {
+  color: #EABF2A;
+  padding-left: 5px; /* Micro-interação premium */
+}
+
+.contact-icon {
+  color: #00B4DB;
+}
+
+/* --- NEWSLETTER --- */
+.footer-newsletter p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-form:focus-within {
+  border-color: #EABF2A;
+}
+
+.newsletter-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 15px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-form button {
+  background: #EABF2A;
+  border: none;
+  color: #0a1f44;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: #F4D03F;
+  transform: scale(1.05);
+}
+
+/* --- BOTTOM BAR (Copyright & Assinatura) --- */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.developer-credit strong {
+  color: #00B4DB;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer-container {
+    padding: 50px 20px 20px 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}

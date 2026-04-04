@@ -1,41 +1,154 @@
-.hero {
-  height: 80vh;
-  width: 100%;
+/* src/App.css */
+
+/* --- 1. A SHADOW BOX (Caixa de Vidro) --- */
+.hero-shadow-box {
+  margin-top: 110px; 
+  margin-bottom: 0px; 
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px 30px;
+  
+  /* Efeito de Vidro e Sombra */
+  background: rgba(10, 31, 68, 0.15); 
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05); 
+  
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  color: #ffffff;
   text-align: center;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-              url('https://images.unsplash.com/photo-1515562141207-7a18b5ce3377?q=80&w=1920');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  margin-top: 80px; /* Para não ficar atrás da navbar */
+  letter-spacing: 4px;
+  margin: 0;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
 }
 
-.hero-content h1 {
-  font-size: 4rem;
-  margin-bottom: 20px;
+.hero-divider {
+  width: 100px;
+  height: 2px;
+  background-color: #EABF2A; /* Ajustado para combinar com o novo dourado */
+  margin-top: 25px;
+  box-shadow: 0 0 10px rgba(234, 191, 42, 0.5); 
 }
 
-.hero-content p {
-  font-size: 1.2rem;
-  font-weight: 300;
-  margin-bottom: 30px;
+
+/* --- 2. OS BOTÕES SOLTOS (Abaixo da Shadow Box) --- */
+.cta-botoes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+  gap: 20px;
+  margin-top: 30px; 
+  margin-bottom: 50px; 
+  position: relative;
+  z-index: 10;
 }
 
-.btn-hero {
-  padding: 15px 40px;
-  border: 1px solid white;
-  background: transparent;
-  color: white;
+/* Botão 1: Dourado Vibrante (Foco B2B / Atacado) */
+.botao-revenda {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  cursor: pointer;
-  transition: 0.5s;
+  letter-spacing: 2px;
+  color: #0a1f44;
+  /* NOVO TOM DE DOURADO: Mais amarelo, rico e vibrante */
+  background-color: #D4AF37; 
+  padding: 15px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  /* Sombra ajustada para a nova cor */
+  box-shadow: 0 5px 20px rgba(247, 196, 13, 0.4);
+  transition: all 0.3s ease;
 }
 
-.btn-hero:hover {
-  background: white;
-  color: black;
+.botao-revenda:hover {
+  transform: translateY(-3px);
+  /* Hover ainda mais iluminado */
+  background-color: #D4AF37; 
+  box-shadow: 0 8px 25px rgba(252, 201, 16, 0.6);
+}
+
+/* Botão 2: Azul Claro (Foco B2C / Varejo) */
+.botao-vendedora {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  background-color: #00B4DB; 
+  padding: 15px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 5px 20px rgba(0, 180, 219, 0.3);
+  transition: all 0.3s ease;
+  border: 1px solid #00B4DB;
+}
+
+.botao-vendedora:hover {
+  transform: translateY(-3px);
+  background-color: #0093b3; 
+  border-color: #0093b3;
+  box-shadow: 0 8px 25px rgba(0, 180, 219, 0.5);
+}
+
+/* Botão 3: Secundário Vidro/Transparente (Exploração Geral) */
+.botao-colecao {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 15px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.botao-colecao:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  transform: translateY(-3px);
+}
+
+
+/* --- 3. RESPONSIVIDADE PARA CELULAR --- */
+@media (max-width: 768px) {
+  .hero-shadow-box {
+    margin-top: 100px; 
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 30px 15px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .cta-botoes-container {
+    flex-direction: column; 
+    padding: 0 20px;
+  }
+  
+  .botao-revenda, .botao-vendedora, .botao-colecao {
+    width: 100%; 
+    text-align: center;
+  }
 }

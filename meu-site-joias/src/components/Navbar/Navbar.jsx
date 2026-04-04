@@ -1,11 +1,12 @@
+// src/components/Navbar/Navbar.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingBag, Search, Menu, X } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X } from 'lucide-react'; // Importamos Menu e X aqui
 import './Navbar.css';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Estado do menu mobile
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -15,36 +16,51 @@ const Navbar = () => {
     { name: 'Contato', href: '#contato' },
   ];
 
+  // Função para fechar o menu ao clicar em um link
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
   return (
-    <nav className="navbar">
+    <motion.nav 
+      initial={{ y: -120, opacity: 0 }} 
+      animate={{ y: 0, opacity: 1 }} 
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      className="navbar"
+    >
       <div className="navbar-container">
         
-        {/* LOGO: Diamante Safira Brilhante */}
+        {/* LOGO */}
         <motion.div whileHover={{ scale: 1.03 }} className="logo-container">
-          <div className="diamond-wrapper">
-            <svg className="diamond-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div className="palm-wrapper">
+            <svg className="palm-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
               <defs>
                 <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00B4DB" /> {/* Ciano brilhante */}
-                  <stop offset="100%" stopColor="#0052D4" /> {/* Azul vibrante */}
+                  <stop offset="0%" stopColor="#00B4DB" />
+                  <stop offset="100%" stopColor="#0a1f44" />
                 </linearGradient>
               </defs>
-              <path d="M50 10L15 40L50 90L85 40L50 10Z" stroke="#D4AF37" strokeWidth="2.5" fill="url(#blueGradient)"/>
-              <path d="M50 10V90M15 40H85M32.5 25L50 40L67.5 25M32.5 55L50 40L67.5 55" stroke="#ffffff" strokeWidth="1.5" opacity="0.9"/>
-              <path d="M50 10L67.5 55M50 10L32.5 55" stroke="#ffffff" strokeWidth="1.5" opacity="0.6"/>
+              <path d="M45 90 Q55 60 48 30" stroke="#D4AF37" strokeWidth="5" strokeLinecap="round" fill="none" />
+              <path d="M48 30 Q20 20 15 45 Q30 35 48 30 Z" fill="url(#blueGradient)" stroke="#F3E5AB" strokeWidth="1" />
+              <path d="M48 30 Q75 20 85 45 Q70 35 48 30 Z" fill="url(#blueGradient)" stroke="#F3E5AB" strokeWidth="1" />
+              <path d="M48 30 Q30 5 15 15 Q35 20 48 30 Z" fill="url(#blueGradient)" stroke="#F3E5AB" strokeWidth="1" />
+              <path d="M48 30 Q65 5 85 15 Q65 20 48 30 Z" fill="url(#blueGradient)" stroke="#F3E5AB" strokeWidth="1" />
+              <path d="M48 30 Q48 0 55 5 Q52 20 48 30 Z" fill="url(#blueGradient)" stroke="#F3E5AB" strokeWidth="1" />
             </svg>
             <span className="sparkle sparkle-1"></span>
             <span className="sparkle sparkle-2"></span>
           </div>
-          <span className="logo-text">GIFT JOIAS</span>
+          <span className="logo-text">GIFT LITORAL</span>
         </motion.div>
         
-        {/* LINKS DESKTOP */}
+        {/* LINKS DE NAVEGAÇÃO DESKTOP (Some no celular) */}
         <div className="nav-links desktop-only">
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <motion.a
               key={item.name}
               href={item.href}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 + 0.1 * index, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.05, color: '#D4AF37', transition: { duration: 0.2 } }}
               className="nav-item"
               onMouseEnter={() => setHoveredItem(item.name)}
               onMouseLeave={() => setHoveredItem(null)}
@@ -66,62 +82,57 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* AÇÕES E MENU */}
-        <div className="nav-actions">
-          <motion.div whileHover={{ scale: 1.1 }} className="desktop-only">
+        {/* AÇÕES DESKTOP (Some no celular) */}
+        <div className="nav-actions desktop-only">
+          <motion.div whileHover={{ scale: 1.1, rotate: 10 }}>
             <Search size={20} className="icon-btn search-icon" />
           </motion.div>
           
-          <motion.div whileHover={{ scale: 1.1 }} className="cart-icon">
+          <motion.div whileHover={{ scale: 1.1, rotate: -10 }} className="cart-icon">
             <ShoppingBag size={20} className="icon-btn bag-icon" />
             <span className="badge">0</span>
           </motion.div>
           
-          <a href="#revenda" className="highlight-btn desktop-only">
+          <motion.a href="#revenda" whileHover={{ scale: 1.05, boxShadow: "0px 10px 40px rgba(212, 175, 55, 0.4)", backgroundColor: "#D4AF37", color: "#ffffff" }} whileTap={{ scale: 0.98 }} className="highlight-btn">
             Seja uma Revendedora
-          </a>
-
-          {/* Botão Hambúrguer isolado para Mobile */}
-          <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          </motion.a>
         </div>
+
+        {/* BOTÃO HAMBÚRGUER MOBILE (Só aparece no celular) */}
+        <button 
+          className="mobile-menu-btn" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+
       </div>
 
-      {/* OVERLAY DO MENU MOBILE */}
+      {/* MENU MOBILE (Dropdown Animado) */}
       <AnimatePresence>
-        {isOpen && (
+        {isMobileMenuOpen && (
           <motion.div 
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: '100vh' }}
+            animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="mobile-menu"
           >
             <div className="mobile-links">
               {navItems.map((item) => (
-                <motion.a 
-                  key={item.name} 
-                  href={item.href} 
-                  onClick={() => setIsOpen(false)}
-                  whileTap={{ scale: 0.95 }}
-                >
+                <a key={item.name} href={item.href} onClick={closeMobileMenu}>
                   {item.name}
-                </motion.a>
+                </a>
               ))}
-              <motion.a 
-                href="#revenda" 
-                className="mobile-highlight" 
-                onClick={() => setIsOpen(false)}
-                whileTap={{ scale: 0.95 }}
-              >
+              <a href="#revenda" className="mobile-highlight" onClick={closeMobileMenu}>
                 Seja uma Revendedora
-              </motion.a>
+              </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+
+    </motion.nav>
   );
 };
 
